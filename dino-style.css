@@ -86,6 +86,37 @@ body {
   font-size: 1.2em;
   font-weight: bold;
   color: #FFD700;
+
+  #game-over {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: #FFD700;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+#game-over button {
+  margin-top: 15px;
+  background: #FFD700;
+  border: none;
+  padding: 10px 20px;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#game-over button:hover {
+  background: #e6c200;
+}
+
   text-align: right;
   padding: 0 10px;
 }
