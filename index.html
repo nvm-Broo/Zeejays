@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZeeJay’s – Food for your Mood</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" href="assets/logo-favicon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <header class="hero">
+    <div class="slideshow" id="slideshow">
+      <img src="assets/slide1.jpg" class="slide active" alt="Slide 1">
+      <img src="assets/slide2.jpg" class="slide" alt="Slide 2">
+      <img src="assets/slide3.jpg" class="slide" alt="Slide 3">
+
+      <div class="dots" id="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      
+    </div>
+  
+    <div class="hero-content">
+      <a href="index.html">
+        <img src="assets/zeejays-logo.png" alt="ZeeJay’s Logo" class="logo" />
+      </a>
+      <h1>Food for your Mood</h1>
+      <p>Homestyle meals made with love and delivered with care.</p>
+      <a href="menu.html" class="btn">View Menu / Order</a>
+    </div>
+  </header>
+  <section class="intro">
+    <h2><span class="highlight">Welcome to ZeeJay’s</span></h2>
+    <p><span class="para">Welcome to ZeeJay’s — where every dish is crafted with love, straight from a home kitchen to yours. We’re not just serving food — we’re serving flavor, warmth, and memories. Designed to match every mood, our fresh meals are delivered right to your door.</span></p>
+  </section>
+  <footer>
+    <div class="social">
+      <a href="https://www.facebook.com/profile.php?id=100090388509995" target="_blank">Facebook</a> |
+      <a href="https://www.instagram.com/zeejays.food/" target="_blank">Instagram</a>
+    </div>
+    <a href="https://wa.me/923287209079" class="whatsapp">Chat on WhatsApp</a>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev');
+        if (i === index) {
+          slide.classList.add('active');
+        } else if (i === (index - 1 + slides.length) % slides.length) {
+          slide.classList.add('prev');
+        }
+      });
+  
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+  
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+  
+    // Optional: click on dots to navigate
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        current = i;
+        showSlide(current);
+      });
+    });
+  
+    // Start slider
+    showSlide(current);
+    setInterval(nextSlide, 5000);
+  </script>
+  
+
+</body>
+</html>
