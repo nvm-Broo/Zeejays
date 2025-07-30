@@ -120,3 +120,30 @@ body {
   text-align: right;
   padding: 0 10px;
 }
+
+#countdown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-weight: bold;
+  color: #FFD700;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 20px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+  z-index: 999;
+  animation: fadePop 0.3s ease-in-out;
+}
+
+@keyframes fadePop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
