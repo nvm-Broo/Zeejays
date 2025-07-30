@@ -69,10 +69,31 @@ canvas.addEventListener("touchstart", jump);
 update();
 
 function restartGame() {
-  score = 0;
-  cactus.x = 600;
-  document.getElementById("score").textContent = "Score: 0";
+  let countdown = 3;
+  const scoreDisplay = document.getElementById("score");
+  const countdownOverlay = document.createElement("div");
+
+  // Style the countdown overlay
+  countdownOverlay.id = "countdown";
+  countdownOverlay.textContent = "Restarting in " + countdown + "...";
+  document.body.appendChild(countdownOverlay);
+
   document.getElementById("game-over").style.display = "none";
-  update();
+
+  const countdownInterval = setInterval(() => {
+    countdown--;
+    if (countdown > 0) {
+      countdownOverlay.textContent = "Restarting in " + countdown + "...";
+    } else {
+      clearInterval(countdownInterval);
+      document.body.removeChild(countdownOverlay);
+      // Reset game
+      score = 0;
+      cactus.x = 600;
+      scoreDisplay.textContent = "Score: 0";
+      update();
+    }
+  }, 1000);
 }
+
 
