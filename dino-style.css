@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(145deg, #000000, #1a1a1a);
+  color: #FFD700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 800px;
+  padding: 30px;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.animated-heading {
+  font-size: 2.8em;
+  margin-bottom: 0.2em;
+  animation: popIn 1s ease-out;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.slogan {
+  font-size: 1.2em;
+  font-style: italic;
+  color: #fff;
+}
+
+.coming-soon {
+  margin-top: 1em;
+  font-size: 1.1em;
+  color: #ccc;
+}
+
+.game-wrapper {
+  margin-top: 20px;
+  background: #222;
+  border: 2px solid #FFD700;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+#game {
+  display: block;
+  background: #111;
+  border-radius: 5px;
+}
+
+.tip {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #888;
+}
+
+.home-button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #000;
+  background: #FFD700;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.home-button:hover {
+  background: #e6c200;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
