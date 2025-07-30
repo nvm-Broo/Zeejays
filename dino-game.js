@@ -1,3 +1,4 @@
+let animationId;
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
@@ -36,18 +37,21 @@ function update() {
     document.getElementById("score").textContent = "Score: " + score;
   }
 
+  // Collision detection
   if (
     dino.x < cactus.x + cactus.width &&
     dino.x + dino.width > cactus.x &&
     dino.y + dino.height > 120
   ) {
-    alert("Game Over! Score: " + score);
-    cactus.x = 600;
-    score = 0;
+    document.getElementById("final-score").textContent = score;
+    document.getElementById("game-over").style.display = "block";
+    cancelAnimationFrame(animationId); // stop the animation loop
+    return;
   }
 
-  requestAnimationFrame(update);
+  animationId = requestAnimationFrame(update); // continue loop
 }
+
 
 function jump() {
   if (!isJumping) {
@@ -63,3 +67,12 @@ document.addEventListener("keydown", e => {
 canvas.addEventListener("touchstart", jump);
 
 update();
+
+function restartGame() {
+  score = 0;
+  cactus.x = 600;
+  document.getElementById("score").textContent = "Score: 0";
+  document.getElementById("game-over").style.display = "none";
+  update();
+}
+
