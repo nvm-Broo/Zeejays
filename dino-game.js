@@ -33,6 +33,7 @@ function update() {
   if (cactus.x < -cactus.width) {
     cactus.x = 600 + Math.random() * 200;
     score++;
+    document.getElementById("score").textContent = "Score: " + score;
   }
 
   if (
