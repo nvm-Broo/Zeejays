@@ -81,3 +81,11 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+#score {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #FFD700;
+  text-align: right;
+  padding: 0 10px;
+}
