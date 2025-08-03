@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZeeJay's Menu</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #fff;
+  }
+
+  header.hero {
+    background-color: #ffcc00;
+    color: #000;
+    padding: 2em 1em 1.2em;
+    text-align: center;
+  }
+
+  header.hero h1 {
+    font-size: 2.4rem;
+    margin: 0;
+  }
+
+  header.hero p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 0.4em;
+  }
+
+  .menu-categories {
+    padding: 2em 1em;
+    text-align: center;
+  }
+
+  .menu-categories h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2em;
+    color: #ffcc00;
+  }
+
+  .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .category-btn {
+    background-color: #ffcc00;
+    color: #000;
+    padding: 0.9em 1.6em;
+    border-radius: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+    font-size: 1rem;
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .category-btn:hover {
+    background-color: #000;
+    color: #ffcc00;
+    box-shadow: 0 0 0 2px #ffcc00 inset;
+  }
+
+  .back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #ffcc00;
+    color: black;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+  }
+
+  .back-btn:hover {
+    background-color: #000;
+    color: #ffcc00;
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 600px) {
+    header.hero h1 {
+      font-size: 2rem;
+    }
+
+    .menu-categories h2 {
+      font-size: 1.4rem;
+    }
+
+    .category-btn {
+      padding: 0.8em 1.2em;
+      font-size: 0.95rem;
+      min-width: 100%;
+    }
+
+    .category-buttons {
+      flex-direction: column;
+      gap: 0.8em;
+    }
+
+    .back-btn {
+      top: 10px;
+      left: 10px;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+    }
+  }
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  height: 300px;
+  position: relative;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2em;
+  border-radius: 12px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin: 0;
+  font-weight: 800;
+  color: #ffcc00;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 0.5em;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.glow-line {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #ffcc00, #fff000, #ffcc00);
+  animation: glowMove 3s linear infinite;
+  box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+}
+
+@keyframes glowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+</style>
+
+</head>
+<body>
+
+<a href="https://nvm-broo.github.io/Zeejays/index.html" class="back-btn">← Back to Home</a>
+
+<header class="hero">
+  <div class="overlay">
+    <h1>ZeeJay's Kitchen</h1>
+    <p>Food for Your Mood</p>
+  </div>
+</header>
+
+<!-- Glowing Animated Line Separator -->
+<div class="glow-line"></div>
+
+
+
+<section class="menu-categories">
+  <h2>Choose a Category</h2>
+  <div class="category-buttons">
+    <a href="sub/rice/rice.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/3109/3109780.png" alt="Rice">
+      Rice Dishes
+    </a>
+    <a href="soup.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/2388/2388080.png" alt="Soup">
+      Soups
+    </a>
+    <a href="pasta.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/4465/4465494.png" alt="Pasta">
+      Pastas
+    </a>
+    <a href="salad.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/5346/5346138.png" alt="Salad">
+      Salads
+    </a>
+    <a href="chinese.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/2718/2718224.png" alt="Chinese">
+      Chinese
+    </a>
+    <a href="desi.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/17559/17559530.png" alt="Desi">
+      Desi Food
+    </a>
+    <a href="snack.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/18079/18079619.png" alt="Snacks">
+      Snacks
+    </a>
+    <a href="sweet.html" class="category-btn">
+      <img src="https://cdn-icons-png.flaticon.com/128/4465/4465242.png" alt="Dessert">
+      Desserts
+    </a>
+  </div>
+</section>
+
+<footer style="background-color: #111; padding: 2em 1em; text-align: center; color: #fff;">
+  <p style="margin: 0.5em 0;">Follow us on</p>
+  <div style="margin-bottom: 1em;">
+    <a href="https://www.facebook.com/profile.php?id=100090388509995" target="_blank" style="color: #ffcc00; margin: 0 10px; text-decoration: none;">Facebook</a> |
+    <a href="https://www.instagram.com/zeejays.food/" target="_blank" style="color: #ffcc00; margin: 0 10px; text-decoration: none;">Instagram</a>
+  </div>
+  <a href="https://wa.me/923287209079" target="_blank" style="display: inline-block; background-color: #25D366; color: white; padding: 10px 16px; border-radius: 50px; text-decoration: none; font-weight: bold;">Chat on WhatsApp</a>
+</footer>
+
+
+</body>
+</html>
