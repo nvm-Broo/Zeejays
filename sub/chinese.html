@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chinese - ZeeJay's</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/nvm-Broo/Zeejays/refs/heads/main/favicon.ico"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .hero {
+      background: url('https://d.newsweek.com/en/full/1552244/variety-chinese-food.jpg') center/cover no-repeat;
+      height: 400px;
+      position: relative;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2em;
+      border-radius: 12px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      font-weight: 800;
+      color: #ffcc00;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 0.5em;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .glow-line {
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(90deg, #ffcc00, #fff000, #ffcc00);
+      animation: glowMove 3s linear infinite;
+      box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+    }
+
+    @keyframes glowMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .menu-section {
+      padding: 2em 1em;
+    }
+
+    .menu-category {
+      margin-bottom: 3em;
+    }
+
+    .menu-category h2 {
+      color: #ffcc00;
+      border-left: 6px solid #ffcc00;
+      padding-left: 0.7em;
+      font-size: 1.6em;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5em;
+      margin-top: 1em;
+    }
+
+    .menu-item {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  border: 2px solid transparent;
+}
+
+
+   .menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px #ffcc00, 0 0 24px #ffcc00;
+  border: 2px solid #ffcc00;
+  transition: 0.3s ease;
+}
+
+
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .menu-item h3 {
+      margin: 0.7em 0 0.2em;
+      color: #fff;
+    }
+
+    .menu-item p {
+      font-weight: bold;
+      color: #ffcc00;
+      margin-bottom: 1em;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #ffcc00;
+      color: black;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+    }
+
+    .back-btn:hover {
+      background-color: #000;
+      color: #ffcc00;
+    }
+
+    .whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  padding: 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  width: 50px;
+  transition: width 0.4s ease, padding 0.4s ease;
+  white-space: nowrap;
+}
+
+.whatsapp-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.whatsapp-btn span {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  width: 180px;
+  padding: 12px 20px;
+}
+
+.whatsapp-btn:hover span {
+  opacity: 1;
+}
+
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+.page-heading {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+
+.page-heading h2 {
+  font-size: 2rem;
+  color: #ffcc00;
+  text-shadow: 
+    0 0 4px #ffcc00,
+    0 0 1px #ffcc00,
+    0 0 1px #ffaa00;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  text-align: center;
+}
+
+.interactive-category {
+  margin-bottom: 4em;
+}
+
+.biryani-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 transparent;
+  transition: all 0.4s ease;
+}
+
+.biryani-card:hover {
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 2;
+}
+
+.biryani-image {
+  flex: 1 1 300px;
+  max-width: 300px;
+  height: 220px; /* ✅ Fixed height */
+  overflow: hidden;
+}
+
+.biryani-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+.biryani-content {
+  flex: 2 1 400px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+}
+
+.variation-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1em;
+}
+
+.variation-buttons button {
+  background-color: transparent;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.variation-buttons button:hover {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+.biryani-info h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.4em;
+}
+
+.biryani-info p {
+  margin: 0.5em 0;
+  color: #ccc;
+}
+
+.biryani-info p#biryani-price {
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .biryani-card {
+    flex-direction: column;
+  }
+
+  .biryani-image, .biryani-content {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <a href="https://nvm-broo.github.io/Zeejays/menu.html" class="back-btn">← Back to Menu</a>
+
+  <header class="hero">
+    <div class="overlay">
+      <h1>ZeeJay's Kitchen</h1>
+    </div>
+  </header>
+
+  <div class="glow-line"></div>
+
+  <div class="page-heading">
+  <h2>Chinese Food</h2>
+</div>
+
+  <section class="menu-section">
+
+    <!-- Manchurian - Interactive Card -->
+<div class="menu-category interactive-category">
+  <h2>Manchurian</h2>
+  <div class="biryani-card">
+    <div class="biryani-image">
+      <img id="biryani-img" src="https://butteroverbae.com/wp-content/uploads/2021/06/sweet-sour-chicken-14.jpg" alt="manchurian">
+    </div>
+    <div class="biryani-content">
+      <div class="variation-buttons">
+        <button onclick="changeBiryani('https://butteroverbae.com/wp-content/uploads/2021/06/sweet-sour-chicken-14.jpg', 'Chicken Manchurian', 'Rs.')">Chicken</button>
+        <button onclick="changeBiryani('https://holycowvegan.net/wp-content/uploads/2020/03/veg-manchurian-7.jpg', 'Veg Manchurian', 'Rs. 400')">Veg</button>
+        <button onclick="changeBiryani('https://images.services.kitchenstories.io/9tgOCgyfO3lnN1YhXxitMCkTsI4=/1920x0/filters:quality(80)/images.kitchenstories.io/communityImages/938fc466c81b64e5675b865ed2a44ef1_bc9f49b8-1a51-4ddd-95ce-b25532eccb45.jpg', 'Egg Manchurian', 'Rs.')">Egg</button>
+        <button onclick="changeBiryani('https://4.bp.blogspot.com/-SOUIQpqHeYs/WocL5L1q83I/AAAAAAAAIKA/oINWdQa-fpExC1oUtWfuVN9V4Nvpd03hgCLcBGAs/s1600/Mushroom%2BManchurian%2B2.jpg', 'Mushroom Manchurian', 'Rs.')">Mushroom</button>
+        <button onclick="changeBiryani('https://3.bp.blogspot.com/-9OwvyeL0XHU/XCfs99jjuVI/AAAAAAAAp64/joWG6knN60U8ismqIdk7QsGjPx1AeImmACLcBGAs/s1600/Vegan%2BEggplant%2BManchurian.jpg', 'Brinjal Manchurian', 'Rs.')">Brinjal</button>
+      </div>
+      <div class="biryani-info">
+        <h3 id="biryani-title">Chicken Manchurian</h3>
+        <p id="biryani-price">Rs.</p>
+        <p>Aromatic basmati rice layered with juicy meat, cooked to perfection in traditional spices. A royal favorite at ZeeJay's.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- chinese ;) -->
+    <div class="menu-category">
+      <h2>Other Dishes</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.4py2isdEGzK-BVtrKOLSOwHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="chickpineapple">
+          <h3>Chicken Pineapple</h3>
+          <p>Rs. </p>
+        </div>
+        <div class="menu-item">
+          <img src="https://tse3.mm.bing.net/th/id/OIP.VN2kyUt6GjKa6bYySDbn0gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="chickblckpeppr">
+          <h3>Chicken Blackpepper</h3>
+          <p>Rs. </p>
+        </div>
+        <div class="menu-item">
+          <img src="https://th.bing.com/th/id/R.d2a737c5c1fa9efd59000c81aa6c51f5?rik=3nU7NdZfVqtTSQ&pid=ImgRaw&r=0" alt="chickalmnd">
+          <h3>Chicken Almond</h3>
+          <p>Rs. </p>
+        </div>
+        <div class="menu-item">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.3ZvWx0y6PENPJSGMMZEEggHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="chillichick">
+          <h3>Chilli Chicken</h3>
+          <p>Rs. </p>
+        </div>
+        <div class="menu-item">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.nsulai1iJITAIeAZ87iz7gAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="jalfrezi">
+          <h3>Chicken Jalfrezi</h3>
+          <p>Rs. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <a href="https://wa.me/923287209079" target="_blank" class="whatsapp-btn">
+  <img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp">
+  <span>Order on WhatsApp</span>
+</a>
+
+<footer style="background-color: #111; padding: 2em 1em; text-align: center; color: #fff;">
+  <p style="margin: 0.5em 0;">Follow us on</p>
+  <div style="margin-bottom: 1em;">
+    <a href="https://www.facebook.com/profile.php?id=100090388509995" target="_blank" style="color: #ffcc00; margin: 0 10px; text-decoration: none;">Facebook</a> |
+    <a href="https://www.instagram.com/zeejays.food/" target="_blank" style="color: #ffcc00; margin: 0 10px; text-decoration: none;">Instagram</a>
+  </div>
+  <a href="https://wa.me/923287209079" target="_blank" style="display: inline-block; background-color: #25D366; color: white; padding: 10px 16px; border-radius: 50px; text-decoration: none; font-weight: bold;">Chat on WhatsApp</a>
+</footer>
+
+<script>
+function changeBiryani(imgSrc, title, price) {
+  document.getElementById('biryani-img').src = imgSrc;
+  document.getElementById('biryani-title').textContent = title;
+  document.getElementById('biryani-price').textContent = price;
+}
+
+function changePulao(imgSrc, title, price) {
+  document.getElementById('pulao-img').src = imgSrc;
+  document.getElementById('pulao-title').textContent = title;
+  document.getElementById('pulao-price').textContent = price;
+}
+</script>
+
+
+</body>
+</html>
