@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snacks - ZeeJay's</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/nvm-Broo/Zeejays/refs/heads/main/favicon.ico"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .hero {
+      background: url('https://th.bing.com/th/id/R.3e860f52a7c02cc7f38b952e2f9a286d?rik=fVSABaPYbCpChA&pid=ImgRaw&r=0') center/cover no-repeat;
+      height: 500px;
+      position: relative;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2em;
+      border-radius: 12px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      font-weight: 800;
+      color: #ffcc00;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 0.5em;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .glow-line {
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(90deg, #ffcc00, #fff000, #ffcc00);
+      animation: glowMove 3s linear infinite;
+      box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+    }
+
+    @keyframes glowMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .menu-section {
+      padding: 2em 1em;
+    }
+
+    .menu-category {
+      margin-bottom: 3em;
+    }
+
+    .menu-category h2 {
+      color: #ffcc00;
+      border-left: 6px solid #ffcc00;
+      padding-left: 0.7em;
+      font-size: 1.6em;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5em;
+      margin-top: 1em;
+    }
+
+    .menu-item {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  border: 2px solid transparent;
+}
+
+
+   .menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px #ffcc00, 0 0 24px #ffcc00;
+  border: 2px solid #ffcc00;
+  transition: 0.3s ease;
+}
+
+
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .menu-item h3 {
+      margin: 0.7em 0 0.2em;
+      color: #fff;
+    }
+
+    .menu-item p {
+      font-weight: bold;
+      color: #ffcc00;
+      margin-bottom: 1em;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #ffcc00;
+      color: black;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+    }
+
+    .back-btn:hover {
+      background-color: #000;
+      color: #ffcc00;
+    }
+
+    .whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  padding: 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  width: 50px;
+  transition: width 0.4s ease, padding 0.4s ease;
+  white-space: nowrap;
+}
+
+.whatsapp-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.whatsapp-btn span {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  width: 180px;
+  padding: 12px 20px;
+}
+
+.whatsapp-btn:hover span {
+  opacity: 1;
+}
+
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+.page-heading {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+
+.page-heading h2 {
+  font-size: 2rem;
+  color: #ffcc00;
+  text-shadow: 
+    0 0 4px #ffcc00,
+    0 0 1px #ffcc00,
+    0 0 1px #ffaa00;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  text-align: center;
+}
+
+.interactive-category {
+  margin-bottom: 4em;
+}
+
+.biryani-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 transparent;
+  transition: all 0.4s ease;
+}
+
+.biryani-card:hover {
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 2;
+}
+
+.biryani-image {
+  flex: 1 1 300px;
+  max-width: 300px;
+  height: 220px; /* ✅ Fixed height */
+  overflow: hidden;
+}
+
+.biryani-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+.biryani-content {
+  flex: 2 1 400px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+}
+
+.variation-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1em;
+}
+
+.variation-buttons button {
+  background-color: transparent;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.variation-buttons button:hover {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+.biryani-info h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.4em;
+}
+
+.biryani-info p {
+  margin: 0.5em 0;
+  color: #ccc;
+}
+
+.biryani-info p#biryani-price {
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .biryani-card {
+    flex-direction: column;
+  }
+
+  .biryani-image, .biryani-content {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <a href="https://nvm-broo.github.io/Zeejays/menu.html" class="back-btn">← Back to Menu</a>
+
+  <header class="hero">
+    <div class="overlay">
+      <h1>ZeeJay's Kitchen</h1>
+    </div>
+  </header>
+
+  <div class="glow-line"></div>
+
+  <div class="page-heading">
+  <h2>Snacks</h2>
+</div>
+
+  <section class="menu-section">
+
+    <!-- Momos - Interactive Card -->
+<div class="menu-category interactive-category">
+  <h2>Momos</h2>
+  <div class="biryani-card">
+    <div class="biryani-image">
+      <img id="biryani-img" src="https://cdn.grofers.com/assets/search/usecase/banner/cheese_steamed_momos_01.png" alt="momos">
+    </div>
+    <div class="biryani-content">
+      <div class="variation-buttons">
+        <button onclick="changeBiryani('https://cdn.grofers.com/assets/search/usecase/banner/cheese_steamed_momos_01.png', 'Steamed Momos', 'Rs.')">Steamed</button>
+        <button onclick="changeBiryani('https://i0.wp.com/vegecravings.com/wp-content/uploads/2021/02/Fried-Momos-Recipe-Step-By-Step-Instructions-scaled.jpg?fit=2560%2C1910&quality=65&strip=all&ssl=1', 'Fried Momos', 'Rs.')">Fried</button>
+        <button onclick="changeBiryani('https://nishkitchen.com/wp-content/uploads/2019/05/Tandoori-Momos-2B.jpg', 'Tandoori Momos', 'Rs.')">Tandoori</button>
+        <button onclick="changeBiryani('https://www.yumcurry.com/wp-content/uploads/2021/05/chilli-garlic-momos-feature-image.jpg', 'Chilli Momos', 'Rs.')">Chilli</button>
+        <button onclick="changeBiryani('https://5.imimg.com/data5/SELLER/Default/2022/6/OK/AV/GY/28598926/frozen-veg-chilli-momos-1000x1000.jpg', 'Qeema Momos', 'Rs.')">Qeema</button>
+        <button onclick="changeBiryani('https://i.pinimg.com/736x/e8/35/ed/e835ed89023c2a6d2d1933321d59efc4.jpg', 'Chicken Momos', 'Rs.')">Chicken</button>
+        <button onclick="changeBiryani('https://i0.wp.com/www.cookingfromheart.com/wp-content/uploads/2016/08/Veg-Momos-5.jpg?resize=721%2C1024', 'Veg Momos', 'Rs.')">Veg</button>
+        <button onclick="changeBiryani('https://tse3.mm.bing.net/th/id/OIP._401_sH4fGpvO3Ief9R_5wHaFj?rs=1&pid=ImgDetMain&o=7&rm=3', 'Cheese Momos', 'Rs.')">Cheese</button>
+        <button onclick="changeBiryani('https://imgmedia.lbb.in/media/2019/11/5dbf36468210130a589a8b33_1572812358520.jpg', 'Chocolate Momos', 'Rs.')">Chocolate</button>
+      </div>
+      <div class="biryani-info">
+        <h3 id="biryani-title">Steamed Momos</h3>
+        <p id="biryani-price">Rs.</p>
+        <p>Delicate steamed dumplings filled with spiced veggies or juicy chicken, served with our fiery chutney at ZeeJay’s.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Snacks -->
+    <div class="menu-category">
+        <h2>Snacks</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="https://i.ytimg.com/vi/I_4vwNYWKgM/maxresdefault.jpg" alt="chickenbread">
+          <h3>Chicken Bread</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://www.pepperbowl.com/wp-content/uploads/2023/09/easy-jalapeno-cheese-sticks-720x1080.jpg" alt="vegrollb">
+          <h3>Veg Bread Roll</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://hungrylankan.com/wp-content/uploads/2020/05/kochchicheese_rolls3-scaled.jpg" alt="chickrollb">
+          <h3>Chicken Bread Roll</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://img.onmanorama.com/content/dam/mm/en/food/in-season/images/2020/5/19/mutton-shami-kebab.jpg" alt="shamikabab">
+          <h3>Shaami Kabab</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://www.cubesnjuliennes.com/wp-content/uploads/2020/04/Bread-Pakora-1.jpg" alt="breadpakora">
+          <h3>Bread Pakora</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://foodaazz.com/wp-content/uploads/2023/10/e5ad5579-6360-4118-b567-b4f4b92552d8.jpeg" alt="kabarollparatha">
+          <h3>Kabab Roll Paratha</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://www.licious.in/blog/wp-content/uploads/2020/12/Chicken-Wrap.jpg" alt="tortilla-wrap">
+          <h3>Chicken Tortilla Wrap</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://images.ctfassets.net/7t85a6f8wt2m/5Us0BzlzzbfYaHtDRdJSx5/a67d6021bcc44cfec85ce3ba403aac7c/Deliciious_Chicken_Tortilla_Wraps-3.jpg?fm=webp&q=50&w=600&h=450&fit=fill" alt="patty-wrap">
+          <h3>Tortilla Patty Wrap</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.x7PfFbTmMD5805LaDimeTQHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="loaded-fries">
+          <h3>Chicken Loaded Fries</h3>
+          <p>Rs. </p>
+        </div>
+
+        <div class="menu-item">
+          <img src="https://hip2save.com/wp-content/uploads/2023/01/Homemade-Pizza-Bites-17.jpg?resize=1024%2C768&strip=all" alt="pizza-bites">
+          <h3>Pizza Bites</h3>
+          <p>Rs. </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ <a href="https://wa.me/923287209079" target="_blank" class="whatsapp-btn">
+  <img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp">
+  <span>Order on WhatsApp</span>
+</a>
+
+<footer style="background-color: #111; padding: 2em 1em; text-align: center; color: #fff;">
+  <p style="margin: 0.5em 0;">Follow us on</p>
+  <div style="margin-bottom: 1em;">
+    <a href="https://www.facebook.com/profile.php?id=100090388509995" target="_blank" style="color: #ffcc00; margin: 0 10px; text-decoration: none;">Facebook</a> |
+    <a href="https://www.instagram.com/zeejays.food/" target="_blank" style="color: #ffcc00; margin: 0 10px; text-decoration: none;">Instagram</a>
+  </div>
+  <a href="https://wa.me/923287209079" target="_blank" style="display: inline-block; background-color: #25D366; color: white; padding: 10px 16px; border-radius: 50px; text-decoration: none; font-weight: bold;">Chat on WhatsApp</a>
+</footer>
+
+<script>
+function changeBiryani(imgSrc, title, price) {
+  document.getElementById('biryani-img').src = imgSrc;
+  document.getElementById('biryani-title').textContent = title;
+  document.getElementById('biryani-price').textContent = price;
+}
+
+function changePulao(imgSrc, title, price) {
+  document.getElementById('pulao-img').src = imgSrc;
+  document.getElementById('pulao-title').textContent = title;
+  document.getElementById('pulao-price').textContent = price;
+}
+</script>
+
+
+</body>
+</html>
