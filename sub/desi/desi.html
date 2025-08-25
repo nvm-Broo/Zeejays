@@ -427,6 +427,82 @@
   color: #ffcc00;
 }
 
+.cart-icon:hover {
+  transform: scale(1.1);
+}
+
+#cart-count {
+  background: black;
+  color: #ffcc00;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.9rem;
+}
+
+/* Cart Row */
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: #1c1c1c;
+  margin-bottom: 6px;
+  border-radius: 8px;
+}
+
+/* Item name & price */
+.cart-item-name {
+  color: #fff;
+  font-weight: bold;
+}
+
+.cart-item-price {
+  color: #ffcc00;
+  margin-left: 10px;
+}
+
+/* Controls */
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Quantity Buttons */
+.qty-btn {
+  background: #ffcc00;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.qty-btn:hover {
+  background: #e6b800;
+}
+
+/* Quantity Number */
+.qty {
+  min-width: 20px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Remove Button */
+.remove-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ff4d4d;
+  transition: 0.2s;
+}
+.remove-btn:hover {
+  color: #ff1a1a;
+}
+
 
   </style>
 </head>
@@ -528,14 +604,14 @@
           <img src="https://cdn.shopify.com/s/files/1/0407/1850/0004/articles/haleem_1024x1024.jpg?v=1626605863" alt="qofta-daleem">
           <h3>Kofta Daleem</h3>
           <p>Rs.</p>
+          <button class="add-cart-btn" onclick="addToCart('Kofta Daleem', )">Add to Cart</button>
         </div>
 
         <div class="menu-item">
           <img src="https://tse1.mm.bing.net/th/id/OIP.EyaWv5l_KIfFRdjjQ3TRNQHaGI?rs=1&pid=ImgDetMain&o=7&rm=3" alt="chickn-veg-mix">
           <h3>Chicken Vegetable Mix</h3>
           <p>Rs.</p>
-          <button class="add-cart-btn" onclick="addToCart('Chicken Veg Mix', )">Add to Cart</button>
-
+          <button class="add-cart-btn" onclick="addToCart('Chicken Veg Mix 1Kg', )">Add to Cart</button>
         </div>
 
         <div class="menu-item">
@@ -543,7 +619,6 @@
           <h3>Nargisi Kofte</h3>
           <p>Rs.</p>
           <button class="add-cart-btn" onclick="addToCart('Nargisi Kofte', )">Add to Cart</button>
-
         </div>
         
       </div>
@@ -594,11 +669,18 @@ function changePulao(imgSrc, title, price) {
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function updateCartCount() {
-  document.getElementById("cart-count").textContent = cart.length;
+  let totalQty = cart.reduce((sum, c) => sum + c.quantity, 0);
+  document.getElementById("cart-count").textContent = totalQty;
 }
 
+
 function addToCart(item, price) {
-  cart.push({ item, price });
+  let existing = cart.find(c => c.item === item);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ item, price, quantity: 1 });
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   renderCartItems();
@@ -609,10 +691,23 @@ function renderCartItems() {
   cartItems.innerHTML = "";
   cart.forEach((c, index) => {
     let li = document.createElement("li");
-    li.textContent = `${c.item} - Rs. ${c.price}`;
+    li.innerHTML = `
+      <div class="cart-row">
+        <span class="cart-item-name">🍴 ${c.item}</span>
+        <span class="cart-item-price">Rs. ${c.price * c.quantity}</span>
+        
+        <div class="cart-controls">
+          <button class="qty-btn" onclick="decreaseQuantity(${index})">-</button>
+          <span class="qty">${c.quantity}</span>
+          <button class="qty-btn" onclick="increaseQuantity(${index})">+</button>
+          <button class="remove-btn" onclick="removeItem(${index})">❌</button>
+        </div>
+      </div>
+    `;
     cartItems.appendChild(li);
   });
 }
+
 
 function toggleCart() {
   let cartBox = document.getElementById("cart-preview");
@@ -633,6 +728,32 @@ function checkout() {
   let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 }
+
+function increaseQuantity(index) {
+  cart[index].quantity += 1;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1); // remove if qty = 0
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
 
 // Load cart count when page loads
 window.onload = () => {
