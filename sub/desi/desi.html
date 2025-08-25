@@ -400,14 +400,23 @@
   color: #000;
   font-weight: bold;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
+
+  /* ✅ Rounded only at bottom */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  /* ✅ Smooth fade + glow transition */
+  transition: all 0.3s ease;
 }
 
 #checkout-btn:hover {
-  background: #000;
-  color: #ffcc00;
+  opacity: 0.85; /* soft fade */
+  box-shadow: 0 0 12px #ffcc00; /* glowing yellow outline */
 }
+
 
 /* Add-to-Cart Button */
 .add-cart-btn {
@@ -502,6 +511,21 @@
 .remove-btn:hover {
   color: #ff1a1a;
 }
+
+#cart-total {
+  margin-top: 10px;
+  padding: 1px 12px;
+  background: #ffcc00;
+  color: #000;
+  text-align: center;
+
+  /* ✅ Only round top-left & top-right */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 
 
   </style>
@@ -634,6 +658,7 @@
 <div id="cart-preview">
   <h3>Your Cart</h3>
   <ul id="cart-items"></ul>
+  <div id="cart-total"></div>
   <button id="checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
 </div>
 
@@ -675,25 +700,33 @@ function updateCartCount() {
 
 
 function addToCart(item, price) {
-  let existing = cart.find(c => c.item === item);
-  if (existing) {
-    existing.quantity += 1;
+  let existingItem = cart.find(c => c.item === item);
+
+  if (existingItem) {
+    existingItem.quantity += 1; // increase quantity if already in cart
   } else {
-    cart.push({ item, price, quantity: 1 });
+    cart.push({ item, price, quantity: 1 }); // new item starts with 1
   }
+
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   renderCartItems();
 }
 
+
 function renderCartItems() {
   let cartItems = document.getElementById("cart-items");
   cartItems.innerHTML = "";
+
+  let total = 0;
+
   cart.forEach((c, index) => {
+    total += c.price * c.quantity; // add to total
+
     let li = document.createElement("li");
     li.innerHTML = `
       <div class="cart-row">
-        <span class="cart-item-name">🍴 ${c.item}</span>
+        <span class="cart-item-name">🍴 ${c.item} x${c.quantity}</span>
         <span class="cart-item-price">Rs. ${c.price * c.quantity}</span>
         
         <div class="cart-controls">
@@ -706,7 +739,12 @@ function renderCartItems() {
     `;
     cartItems.appendChild(li);
   });
+
+  // ✅ Update total line
+  document.getElementById("cart-total").textContent = ` Total: Rs. ${total}`;
 }
+
+
 
 
 function toggleCart() {
@@ -718,9 +756,10 @@ function toggleCart() {
 function checkout() {
   let message = "🛒 *ZeeJay's Order*\n\n";
   cart.forEach(c => {
-    message += `🍴 ${c.item} - Rs. ${c.price}\n`;
+    message += `🍴 ${c.item} x${c.quantity} - Rs. ${c.price * c.quantity}\n`;
   });
-  let total = cart.reduce((sum, c) => sum + c.price, 0);
+  
+  let total = cart.reduce((sum, c) => sum + (c.price * c.quantity), 0);
   message += `\n💰 Total: Rs. ${total}`;
 
   // Replace with your ZeeJay's WhatsApp number
@@ -728,6 +767,7 @@ function checkout() {
   let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 }
+
 
 function increaseQuantity(index) {
   cart[index].quantity += 1;
@@ -741,6 +781,31 @@ function decreaseQuantity(index) {
     cart[index].quantity -= 1;
   } else {
     cart.splice(index, 1); // remove if qty = 0
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function increaseQuantity(index) {
+  cart[index].quantity++;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity--;
+  } else {
+    cart.splice(index, 1); // remove if 0
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCartItems();
