@@ -303,6 +303,197 @@
   }
 }
 
+/* Floating Cart Icon */
+.cart-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ffcc00;
+  color: #000;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+.cart-icon span {
+  background: #000;
+  color: #ffcc00;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 6px;
+}
+
+/* Cart Preview */
+#cart-preview {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 280px;
+  background: #1c1c1c;
+  border: 2px solid #ffcc00;
+  border-radius: 12px;
+  padding: 1em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1000;
+}
+
+#cart-preview h3 {
+  margin: 0 0 10px;
+  color: #ffcc00;
+}
+
+#cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1em;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#cart-items li {
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+/* Checkout Button */
+#checkout-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+
+  /* ✅ Rounded only at bottom */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  /* ✅ Smooth fade + glow transition */
+  transition: all 0.3s ease;
+}
+
+#checkout-btn:hover {
+  opacity: 0.85; /* soft fade */
+  box-shadow: 0 0 12px #ffcc00; /* glowing yellow outline */
+}
+
+
+/* Add-to-Cart Button */
+.add-cart-btn {
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-cart-btn:hover {
+  background: #000;
+  color: #ffcc00;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+}
+
+#cart-count {
+  background: black;
+  color: #ffcc00;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.9rem;
+}
+
+/* Cart Row */
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: #1c1c1c;
+  margin-bottom: 6px;
+  border-radius: 8px;
+}
+
+/* Item name & price */
+.cart-item-name {
+  color: #fff;
+  font-weight: bold;
+}
+
+.cart-item-price {
+  color: #ffcc00;
+  margin-left: 10px;
+}
+
+/* Controls */
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Quantity Buttons */
+.qty-btn {
+  background: #ffcc00;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.qty-btn:hover {
+  background: #e6b800;
+}
+
+/* Quantity Number */
+.qty {
+  min-width: 20px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Remove Button */
+.remove-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ff4d4d;
+  transition: 0.2s;
+}
+.remove-btn:hover {
+  color: #ff1a1a;
+}
+
+#cart-total {
+  margin-top: 10px;
+  padding: 1px 12px;
+  background: #ffcc00;
+  color: #000;
+  text-align: center;
+
+  /* ✅ Only round top-left & top-right */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
   </style>
 </head>
@@ -332,15 +523,20 @@
     </div>
     <div class="biryani-content">
       <div class="variation-buttons">
-        <button onclick="changeBiryani('https://butteroverbae.com/wp-content/uploads/2021/06/sweet-sour-chicken-14.jpg', 'Chicken Manchurian', 'Rs.')">Chicken</button>
-        <button onclick="changeBiryani('https://holycowvegan.net/wp-content/uploads/2020/03/veg-manchurian-7.jpg', 'Veg Manchurian', 'Rs. 400')">Veg</button>
-        <button onclick="changeBiryani('https://images.services.kitchenstories.io/9tgOCgyfO3lnN1YhXxitMCkTsI4=/1920x0/filters:quality(80)/images.kitchenstories.io/communityImages/938fc466c81b64e5675b865ed2a44ef1_bc9f49b8-1a51-4ddd-95ce-b25532eccb45.jpg', 'Egg Manchurian', 'Rs.')">Egg</button>
-        <button onclick="changeBiryani('https://4.bp.blogspot.com/-SOUIQpqHeYs/WocL5L1q83I/AAAAAAAAIKA/oINWdQa-fpExC1oUtWfuVN9V4Nvpd03hgCLcBGAs/s1600/Mushroom%2BManchurian%2B2.jpg', 'Mushroom Manchurian', 'Rs.')">Mushroom</button>
-        <button onclick="changeBiryani('https://3.bp.blogspot.com/-9OwvyeL0XHU/XCfs99jjuVI/AAAAAAAAp64/joWG6knN60U8ismqIdk7QsGjPx1AeImmACLcBGAs/s1600/Vegan%2BEggplant%2BManchurian.jpg', 'Brinjal Manchurian', 'Rs.')">Brinjal</button>
+        <button onclick="changeBiryani('https://butteroverbae.com/wp-content/uploads/2021/06/sweet-sour-chicken-14.jpg', 'Chicken Manchurian', 'Rs.1400/Kg')">Chicken</button>
+        <button onclick="changeBiryani('https://holycowvegan.net/wp-content/uploads/2020/03/veg-manchurian-7.jpg', 'Veg Manchurian', 'Rs.900/Kg')">Veg</button>
+        <button onclick="changeBiryani('https://3.bp.blogspot.com/-9OwvyeL0XHU/XCfs99jjuVI/AAAAAAAAp64/joWG6knN60U8ismqIdk7QsGjPx1AeImmACLcBGAs/s1600/Vegan%2BEggplant%2BManchurian.jpg', 'Brinjal Manchurian', 'Rs.900/Kg')">Brinjal</button>
       </div>
       <div class="biryani-info">
         <h3 id="biryani-title">Chicken Manchurian</h3>
-        <p id="biryani-price">Rs.</p>
+        <p id="biryani-price">Rs.1400/Kg</p>
+        <button class="add-cart-btn" 
+        onclick="addToCart(
+          document.getElementById('biryani-title').textContent, 
+          parseInt(document.getElementById('biryani-price').textContent.replace(/[^0-9]/g, ''))
+        )">
+  Add to Cart
+</button>
         <p>Crispy veggie balls, tender chicken, or fluffy egg, all wok-tossed in our spicy garlic-soy sauce — an Indo-Chinese favorite at ZeeJay’s..</p>
       </div>
     </div>
@@ -354,31 +550,46 @@
         <div class="menu-item">
           <img src="https://tse2.mm.bing.net/th/id/OIP.4py2isdEGzK-BVtrKOLSOwHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="chickpineapple">
           <h3>Chicken Pineapple</h3>
-          <p>Rs. </p>
+          <p>Rs.1800/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Chicken Pineapple 1Kg', 1800)">Add to Cart</button>
         </div>
+
         <div class="menu-item">
           <img src="https://tse3.mm.bing.net/th/id/OIP.VN2kyUt6GjKa6bYySDbn0gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="chickblckpeppr">
           <h3>Chicken Blackpepper</h3>
-          <p>Rs. </p>
+          <p>Rs.1600/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Chicken Blackpepper 1Kg', 1600)">Add to Cart</button>
         </div>
+
         <div class="menu-item">
           <img src="https://th.bing.com/th/id/R.d2a737c5c1fa9efd59000c81aa6c51f5?rik=3nU7NdZfVqtTSQ&pid=ImgRaw&r=0" alt="chickalmnd">
           <h3>Chicken Almond</h3>
-          <p>Rs. </p>
+          <p>Rs.1800/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Chicken Almond 1Kg', 1800)">Add to Cart</button>
         </div>
-        <div class="menu-item">
-          <img src="https://tse4.mm.bing.net/th/id/OIP.3ZvWx0y6PENPJSGMMZEEggHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="chillichick">
-          <h3>Chilli Chicken</h3>
-          <p>Rs. </p>
-        </div>
+
         <div class="menu-item">
           <img src="https://tse2.mm.bing.net/th/id/OIP.nsulai1iJITAIeAZ87iz7gAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="jalfrezi">
           <h3>Chicken Jalfrezi</h3>
-          <p>Rs. </p>
+          <p>Rs.1400/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Chicken Jalfrezi 1Kg', 1400)">Add to Cart</button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Floating Cart Icon -->
+<div class="cart-icon" onclick="toggleCart()">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- Cart Preview -->
+<div id="cart-preview">
+  <h3>Your Cart</h3>
+  <ul id="cart-items"></ul>
+  <div id="cart-total"></div>
+  <button id="checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
+</div>
 
  <a href="https://wa.me/923287209079" target="_blank" class="whatsapp-btn">
   <img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp">
@@ -406,6 +617,156 @@ function changePulao(imgSrc, title, price) {
   document.getElementById('pulao-title').textContent = title;
   document.getElementById('pulao-price').textContent = price;
 }
+</script>
+
+<script>
+function changeBiryani(imgSrc, title, price) {
+  document.getElementById('biryani-img').src = imgSrc;
+  document.getElementById('biryani-title').textContent = title;
+  document.getElementById('biryani-price').textContent = price;
+}
+
+function changePulao(imgSrc, title, price) {
+  document.getElementById('pulao-img').src = imgSrc;
+  document.getElementById('pulao-title').textContent = title;
+  document.getElementById('pulao-price').textContent = price;
+}
+</script>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCartCount() {
+  let totalQty = cart.reduce((sum, c) => sum + c.quantity, 0);
+  document.getElementById("cart-count").textContent = totalQty;
+}
+
+
+function addToCart(item, price) {
+  let existingItem = cart.find(c => c.item === item);
+
+  if (existingItem) {
+    existingItem.quantity += 1; // increase quantity if already in cart
+  } else {
+    cart.push({ item, price, quantity: 1 }); // new item starts with 1
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  renderCartItems();
+}
+
+
+function renderCartItems() {
+  let cartItems = document.getElementById("cart-items");
+  cartItems.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((c, index) => {
+    total += c.price * c.quantity; // add to total
+
+    let li = document.createElement("li");
+    li.innerHTML = `
+      <div class="cart-row">
+        <span class="cart-item-name">🍴 ${c.item} x${c.quantity}</span>
+        <span class="cart-item-price">Rs. ${c.price * c.quantity}</span>
+        
+        <div class="cart-controls">
+          <button class="qty-btn" onclick="decreaseQuantity(${index})">-</button>
+          <span class="qty">${c.quantity}</span>
+          <button class="qty-btn" onclick="increaseQuantity(${index})">+</button>
+          <button class="remove-btn" onclick="removeItem(${index})">❌</button>
+        </div>
+      </div>
+    `;
+    cartItems.appendChild(li);
+  });
+
+  // ✅ Update total line
+  document.getElementById("cart-total").textContent = ` Total: Rs. ${total}`;
+}
+
+
+
+
+function toggleCart() {
+  let cartBox = document.getElementById("cart-preview");
+  cartBox.style.display = cartBox.style.display === "block" ? "none" : "block";
+  renderCartItems();
+}
+
+function checkout() {
+  let message = "🛒 *ZeeJay's Order*\n\n";
+  cart.forEach(c => {
+    message += `🍴 ${c.item} x${c.quantity} - Rs. ${c.price * c.quantity}\n`;
+  });
+  
+  let total = cart.reduce((sum, c) => sum + (c.price * c.quantity), 0);
+  message += `\n💰 Total: Rs. ${total}`;
+
+  // Replace with your ZeeJay's WhatsApp number
+  let phone = "923287209079"; 
+  let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+
+function increaseQuantity(index) {
+  cart[index].quantity += 1;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1); // remove if qty = 0
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function increaseQuantity(index) {
+  cart[index].quantity++;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity--;
+  } else {
+    cart.splice(index, 1); // remove if 0
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+
+// Load cart count when page loads
+window.onload = () => {
+  updateCartCount();
+};
 </script>
 
 

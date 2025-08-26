@@ -303,6 +303,197 @@
   }
 }
 
+/* Floating Cart Icon */
+.cart-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ffcc00;
+  color: #000;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+.cart-icon span {
+  background: #000;
+  color: #ffcc00;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 6px;
+}
+
+/* Cart Preview */
+#cart-preview {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 280px;
+  background: #1c1c1c;
+  border: 2px solid #ffcc00;
+  border-radius: 12px;
+  padding: 1em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1000;
+}
+
+#cart-preview h3 {
+  margin: 0 0 10px;
+  color: #ffcc00;
+}
+
+#cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1em;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#cart-items li {
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+/* Checkout Button */
+#checkout-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+
+  /* ✅ Rounded only at bottom */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  /* ✅ Smooth fade + glow transition */
+  transition: all 0.3s ease;
+}
+
+#checkout-btn:hover {
+  opacity: 0.85; /* soft fade */
+  box-shadow: 0 0 12px #ffcc00; /* glowing yellow outline */
+}
+
+
+/* Add-to-Cart Button */
+.add-cart-btn {
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-cart-btn:hover {
+  background: #000;
+  color: #ffcc00;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+}
+
+#cart-count {
+  background: black;
+  color: #ffcc00;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.9rem;
+}
+
+/* Cart Row */
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: #1c1c1c;
+  margin-bottom: 6px;
+  border-radius: 8px;
+}
+
+/* Item name & price */
+.cart-item-name {
+  color: #fff;
+  font-weight: bold;
+}
+
+.cart-item-price {
+  color: #ffcc00;
+  margin-left: 10px;
+}
+
+/* Controls */
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Quantity Buttons */
+.qty-btn {
+  background: #ffcc00;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.qty-btn:hover {
+  background: #e6b800;
+}
+
+/* Quantity Number */
+.qty {
+  min-width: 20px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Remove Button */
+.remove-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ff4d4d;
+  transition: 0.2s;
+}
+.remove-btn:hover {
+  color: #ff1a1a;
+}
+
+#cart-total {
+  margin-top: 10px;
+  padding: 1px 12px;
+  background: #ffcc00;
+  color: #000;
+  text-align: center;
+
+  /* ✅ Only round top-left & top-right */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
   </style>
 </head>
@@ -332,14 +523,20 @@
     </div>
     <div class="biryani-content">
       <div class="variation-buttons">
-        <button onclick="changeBiryani('muttonbir.jpg', 'Mutton Biryani', 'Rs. ')">Mutton</button>
-        <button onclick="changeBiryani('chickenbir.webp', 'Chicken Biryani', 'Rs. ')">Chicken</button>
-        <button onclick="changeBiryani('beefbir.jpeg', 'Beef Biryani', 'Rs. ')">Beef</button>
-        <button onclick="changeBiryani('aloobir.jpg', 'Aloo Biryani', 'Rs. ')">Aloo</button>
+        <button onclick="changeBiryani('muttonbir.jpg', 'Mutton Biryani', 'Rs.2600/Kg')">Mutton</button>
+        <button onclick="changeBiryani('chickenbir.webp', 'Chicken Biryani', 'Rs.1800/Kg')">Chicken</button>
+        <button onclick="changeBiryani('beefbir.jpeg', 'Beef Biryani', 'Rs.2000/Kg')">Beef</button>
       </div>
       <div class="biryani-info">
         <h3 id="biryani-title">Mutton Biryani</h3>
-        <p id="biryani-price">Rs. </p>
+        <p id="biryani-price">Rs.2600/Kg</p>
+        <button class="add-cart-btn" 
+        onclick="addToCart(
+          document.getElementById('biryani-title').textContent, 
+          parseInt(document.getElementById('biryani-price').textContent.replace(/[^0-9]/g, ''))
+        )">
+  Add to Cart
+</button>
         <p>Aromatic basmati rice layered with juicy meat, cooked to perfection in traditional spices. A royal favorite at ZeeJay's.</p>
       </div>
     </div>
@@ -355,13 +552,20 @@
     </div>
     <div class="biryani-content">
       <div class="variation-buttons">
-        <button onclick="changePulao('beefpul.jpg', 'Beef Pulao', 'Rs. ')">Beef</button>
-        <button onclick="changePulao('chickenpul.jpg', 'Chicken Pulao', 'Rs. ')">Chicken</button>
-        <button onclick="changePulao('muttonpul.jpg', 'Mutton Pulao', 'Rs. ')">Mutton</button>
+        <button onclick="changePulao('beefpul.jpg', 'Beef Pulao', 'Rs.2000/Kg')">Beef</button>
+        <button onclick="changePulao('chickenpul.jpg', 'Chicken Pulao', 'Rs.1800/Kg')">Chicken</button>
+        <button onclick="changePulao('muttonpul.jpg', 'Mutton Pulao', 'Rs.2600/Kg')">Mutton</button>
       </div>
       <div class="biryani-info">
         <h3 id="pulao-title">Beef Pulao</h3>
-        <p id="pulao-price">Rs. </p>
+        <p id="pulao-price">Rs.2000/Kg</p>
+        <button class="add-cart-btn" 
+        onclick="addToCart(
+          document.getElementById('pulao-title').textContent, 
+          parseInt(document.getElementById('pulao-price').textContent.replace(/[^0-9]/g, ''))
+        )">
+  Add to Cart
+</button>
         <p>Fragrant rice infused with tender meat and rich spices — a timeless classic of every desi feast at ZeeJay’s.</p>
       </div>
     </div>
@@ -376,31 +580,53 @@
         <div class="menu-item">
           <img src="chickfrice.jpg" alt="Fried Rice">
           <h3>Chicken Fried Rice</h3>
-          <p>Rs. </p>
+          <p>Rs.1600/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Chicken Fried Rice 1Kg', 1600)">Add to Cart</button>
         </div>
+
         <div class="menu-item">
-          <img src="daalchal.jpg" alt="Daal Chawal">
-          <h3>Daal Chawal</h3>
-          <p>Rs. </p>
+          <img src="daalchal.jpg" alt="Zeera Chawal">
+          <h3>Zeera Chawal</h3>
+          <p>Rs.900/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Zeera Chawal 1Kg', 900)">Add to Cart</button>
         </div>
+
         <div class="menu-item">
           <img src="eggfrice.jpg" alt="Egg Fried">
           <h3>Egg Fried Rice</h3>
-          <p>Rs. </p>
+          <p>Rs.1300/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Egg Fried Rice 1Kg', 1300)">Add to Cart</button>
         </div>
+
         <div class="menu-item">
           <img src="vegfrice.jpg" alt="Veg Fried">
           <h3>Veg Fried Rice</h3>
-          <p>Rs. </p>
+          <p>Rs.1300/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Veg Fried Rice 1Kg', 1300)">Add to Cart</button>
         </div>
+
         <div class="menu-item">
           <img src="buttergrice.jpg" alt="Butter Garlic">
           <h3>Butter Garlic Rice</h3>
-          <p>Rs. </p>
+          <p>Rs.1000/Kg</p>
+          <button class="add-cart-btn" onclick="addToCart('Butter Garlic Rice', 1000)">Add to Cart</button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Floating Cart Icon -->
+<div class="cart-icon" onclick="toggleCart()">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- Cart Preview -->
+<div id="cart-preview">
+  <h3>Your Cart</h3>
+  <ul id="cart-items"></ul>
+  <div id="cart-total"></div>
+  <button id="checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
+</div>
 
  <a href="https://wa.me/923287209079" target="_blank" class="whatsapp-btn">
   <img src="https://cdn-icons-png.flaticon.com/24/733/733585.png" alt="WhatsApp">
@@ -430,6 +656,141 @@ function changePulao(imgSrc, title, price) {
 }
 </script>
 
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCartCount() {
+  let totalQty = cart.reduce((sum, c) => sum + c.quantity, 0);
+  document.getElementById("cart-count").textContent = totalQty;
+}
+
+
+function addToCart(item, price) {
+  let existingItem = cart.find(c => c.item === item);
+
+  if (existingItem) {
+    existingItem.quantity += 1; // increase quantity if already in cart
+  } else {
+    cart.push({ item, price, quantity: 1 }); // new item starts with 1
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  renderCartItems();
+}
+
+
+function renderCartItems() {
+  let cartItems = document.getElementById("cart-items");
+  cartItems.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((c, index) => {
+    total += c.price * c.quantity; // add to total
+
+    let li = document.createElement("li");
+    li.innerHTML = `
+      <div class="cart-row">
+        <span class="cart-item-name">🍴 ${c.item} x${c.quantity}</span>
+        <span class="cart-item-price">Rs. ${c.price * c.quantity}</span>
+        
+        <div class="cart-controls">
+          <button class="qty-btn" onclick="decreaseQuantity(${index})">-</button>
+          <span class="qty">${c.quantity}</span>
+          <button class="qty-btn" onclick="increaseQuantity(${index})">+</button>
+          <button class="remove-btn" onclick="removeItem(${index})">❌</button>
+        </div>
+      </div>
+    `;
+    cartItems.appendChild(li);
+  });
+
+  // ✅ Update total line
+  document.getElementById("cart-total").textContent = ` Total: Rs. ${total}`;
+}
+
+
+
+
+function toggleCart() {
+  let cartBox = document.getElementById("cart-preview");
+  cartBox.style.display = cartBox.style.display === "block" ? "none" : "block";
+  renderCartItems();
+}
+
+function checkout() {
+  let message = "🛒 *ZeeJay's Order*\n\n";
+  cart.forEach(c => {
+    message += `🍴 ${c.item} x${c.quantity} - Rs. ${c.price * c.quantity}\n`;
+  });
+  
+  let total = cart.reduce((sum, c) => sum + (c.price * c.quantity), 0);
+  message += `\n💰 Total: Rs. ${total}`;
+
+  // Replace with your ZeeJay's WhatsApp number
+  let phone = "923287209079"; 
+  let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+
+function increaseQuantity(index) {
+  cart[index].quantity += 1;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1); // remove if qty = 0
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function increaseQuantity(index) {
+  cart[index].quantity++;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity--;
+  } else {
+    cart.splice(index, 1); // remove if 0
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+
+// Load cart count when page loads
+window.onload = () => {
+  updateCartCount();
+};
+</script>
 
 </body>
 </html>
