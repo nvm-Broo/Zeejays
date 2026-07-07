@@ -1,167 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ZeeJay’s – Food for your Mood</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="icon" href="assets/logo-favicon.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZeeJay's – Food for your Mood</title>
+<meta name="description" content="Homestyle Pakistani, Chinese and continental meals, cooked to order and delivered by ZeeJay's. Pre-order 6 hours to 1 day ahead.">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .hero{padding:96px 0 64px;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:-140px;right:-160px;width:480px;height:480px;background:radial-gradient(circle, var(--turmeric-dim) 0%, transparent 70%);opacity:.55;pointer-events:none;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:end;position:relative;}
+  .hero h1{font-size:clamp(44px,6vw,74px);letter-spacing:-0.01em;margin:18px 0 22px;}
+  .hero h1 em{font-style:italic;color:var(--turmeric);font-weight:500;}
+  .hero p.lede{font-size:18px;color:var(--cream-dim);max-width:46ch;margin-bottom:32px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .mood-card{background:var(--ink-2);border:1px solid var(--line);border-radius:4px;padding:28px;}
+  .mood-card .eyebrow{margin-bottom:14px;display:block;}
+  .mood-pills{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
+  .mood-pill{font-family:'Space Mono',monospace;font-size:12.5px;padding:9px 14px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--cream-dim);cursor:pointer;transition:all .2s ease;}
+  .mood-pill:hover{border-color:var(--cream);color:var(--cream);}
+  .mood-pill.active{background:var(--accent,var(--turmeric));border-color:var(--accent,var(--turmeric));color:#22160A;}
+  .mood-display{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;}
+  .mood-display img{width:120px;height:120px;object-fit:cover;border-radius:3px;}
+  .mood-dish-label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent,var(--turmeric));margin-bottom:6px;}
+  .mood-dish-name{font-family:'Fraunces',serif;font-size:24px;font-weight:600;margin-bottom:6px;}
+  .mood-dish-desc{font-size:14px;color:var(--cream-dim);line-height:1.5;}
+  .mood-fade{transition:opacity .25s ease;}
+
+  .dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .dish-tile{background:var(--ink);padding:26px;}
+  .dish-tile img{width:100%;height:180px;object-fit:cover;border-radius:3px;margin-bottom:16px;}
+  .dish-tile h3{font-size:19px;margin-bottom:8px;}
+  .dish-tile p{color:var(--cream-dim);font-size:14px;margin:0;}
+  @media (max-width:820px){ .dish-grid{grid-template-columns:1fr;} }
+</style>
 </head>
 <body>
-  <header class="hero">
-    <div class="slideshow" id="slideshow">
-      <img src="assets/slide1.jpg" class="slide active" alt="Slide 1">
-      <img src="assets/slide2.jpg" class="slide" alt="Slide 2">
-      <img src="assets/slide3.jpg" class="slide" alt="Slide 3">
-      <img src="https://th.bing.com/th/id/R.caf629510da9ad2658fdb9ecd69d8e1a?rik=CKzTmo%2fa5dCJ2A&pid=ImgRaw&r=0" class="slide" alt="Slide 4">
-      <img src="https://img.freepik.com/vrije-photo/boven-meningssnacks-op-houten-achtergrond_23-2148582629.jpg" class="slide" alt="Slide 5">
 
-      <div class="dots" id="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="https://nvm-broo.github.io/Zeejays/assets/zeejays-logo.png" alt="ZeeJay's logo">
+      <span>ZeeJay's</span>
+    </a>
+    <div class="nav-links">
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/923287209079" target="_blank" rel="noopener">Order on WhatsApp</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Homemade · Pre-order only</span>
+      <h1>Food for<br><em>your mood.</em></h1>
+      <p class="lede">Every dish leaves a home kitchen, not a commercial one — cooked to order, delivered while it's still warm. Tell us how you're feeling. We'll tell you what to eat.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="menu.html">View full menu</a>
+        <a class="btn btn-ghost" href="https://wa.me/923287209079" target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
-      
     </div>
-  
-    <div class="hero-content">
-      <a href="index.html">
-        <img src="assets/zeejays-logo.png" alt="ZeeJay’s Logo" class="logo" />
-      </a>
-      <h1>Food for your Mood</h1>
-      <p>Homestyle meals made with love and delivered with care.</p>
-      <a href="menu.html" class="btn">View Menu / Order</a>
-    </div>
-  </header>
 
-  <section class="intro">
-    <h2><span class="highlight">Welcome to ZeeJay’s</span></h2>
-    <p><span class="para">Welcome to ZeeJay’s — where every dish is crafted with love, straight from a home kitchen to yours. We’re not just serving food — we’re serving flavor, warmth, and memories. Designed to match every mood, our fresh meals are delivered right to your door.</span></p>
-  </section>
+    <div class="mood-card" id="mood">
+      <span class="eyebrow">Pick your mood</span>
+      <div class="mood-pills" id="moodPills"></div>
+      <div class="mood-display mood-fade" id="moodDisplay"></div>
+    </div>
+  </div>
+</header>
 
-  <!-- Signature Dishes Section -->
-<section class="signature-dishes">
-  <h2>Our <span class="highlight">Signature Dishes</span></h2>
-  <div class="dish-grid">
-    <div class="dish-card">
-      <img src="sub/rice/chickenbir.webp" alt="Signature Biryani">
-      <h3>Special Biryani</h3>
-      <p>Fragrant rice layered with tender meat & spices – our best-seller!</p>
+<section class="section reveal" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why ZeeJay's</span>
+      <h2>Nothing here comes from a factory line.</h2>
     </div>
-    <div class="dish-card">
-      <img src="https://img.taste.com.au/vJFgvlvo/taste/2019/04/white-chicken-korma-curry-148900-1.jpg" alt="Signature Karahi">
-      <h3>White Chicken Karahi</h3>
-      <p>Cooked fresh in traditional wok with ZeeJay’s secret masala.</p>
-    </div>
-    <div class="dish-card">
-      <img src="sub/manchurian.jpg" alt="Manchurian">
-      <h3>Manchurian</h3>
-      <p>Indo-Chinese favorite, tossed in spicy garlic-soy sauce.</p>
+    <div class="why-list">
+      <div class="why-row">
+        <span class="num">01</span>
+        <h3>Cooked to order</h3>
+        <p>We don't pre-make trays and reheat. Your order goes into the kitchen once it's placed, so it reaches you the way it left the stove.</p>
+      </div>
+      <div class="why-row">
+        <span class="num">02</span>
+        <h3>On time, every time</h3>
+        <p>Give us 6 hours to a day's notice and we'll have it hot at your door exactly when you asked for it.</p>
+      </div>
+      <div class="why-row">
+        <span class="num">03</span>
+        <h3>A dish for every mood</h3>
+        <p>Comfort food on a slow evening, something fiery when you need a kick, something new when you're bored of the usual — we've got a lane for all of it.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<div class="strip">
+  <div class="wrap">
+    <span class="eyebrow">Heads up</span>
+    <p>Place your order 6 hours to 1 day ahead so it reaches you fresh, not rushed.</p>
+  </div>
+</div>
 
-  <!-- 📌 Customer Pre-Order Reminder Banner hmmm -->
-<section class="preorder-banner">
-  <div class="preorder-content">
-    <h2>⚡ Pre-Orders Only</h2>
-    <p>Please place your order <strong>6 hours to 1 day in advance</strong> so we can serve you fresh, homestyle meals 🍲</p>
+<section class="section reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Signature dishes</span>
+      <h2>The three most requested.</h2>
+    </div>
+    <div class="dish-grid">
+      <div class="dish-tile">
+        <img src="https://nvm-broo.github.io/Zeejays/sub/rice/chickenbir.webp" alt="ZeeJay's special biryani">
+        <h3>Special Biryani</h3>
+        <p>Fragrant rice layered with tender meat and slow-built spice — our best-seller, and the one people reorder first.</p>
+      </div>
+      <div class="dish-tile">
+        <img src="https://img.taste.com.au/vJFgvlvo/taste/2019/04/white-chicken-korma-curry-148900-1.jpg" alt="White chicken karahi">
+        <h3>White Chicken Karahi</h3>
+        <p>Cooked fresh in a traditional wok with ZeeJay's own masala blend — rich, not overpowering.</p>
+      </div>
+      <div class="dish-tile">
+        <img src="https://nvm-broo.github.io/Zeejays/sub/manchurian.jpg" alt="Manchurian">
+        <h3>Manchurian</h3>
+        <p>Our Indo-Chinese favorite, tossed in a spicy garlic-soy sauce for when you want something outside the usual rotation.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-  <!-- Why Choose ZeeJay’s Section -->
-  <section class="why-choose">
-    <h2>Why Choose <span class="highlight">ZeeJay’s?</span></h2>
-    <div class="why-grid">
-      <div class="why-item">
-        <span class="icon">🏡</span>
-        <h3>Homemade with Love</h3>
-        <p>Every dish is cooked fresh in our home kitchen with authentic flavors.</p>
+<section class="section reveal" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What people say</span>
+      <h2>Straight from customers.</h2>
+    </div>
+    <div class="quote-grid">
+      <div class="quote-card">
+        <p class="q">"The biryani tasted just like home. So comforting and delicious."</p>
+        <span class="who">Irfan K.</span>
       </div>
-      <div class="why-item">
-        <span class="icon">🚚</span>
-        <h3>Fresh & On-Time</h3>
-        <p>Your order is delivered hot and fresh, right when you need it.</p>
+      <div class="quote-card">
+        <p class="q">"Best karahi I've had in years. Flavorful and fresh."</p>
+        <span class="who">Sham A.</span>
       </div>
-      <div class="why-item">
-        <span class="icon">💛</span>
-        <h3>Food for Every Mood</h3>
-        <p>From comfort meals to festive feasts — we have a dish for everyone.</p>
+      <div class="quote-card">
+        <p class="q">"Timely delivery and amazing food quality. Highly recommended."</p>
+        <span class="who">Talha T.</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonial-list">
-      <div class="testimonial">
-        <p>“The biryani tasted just like home. So comforting and delicious!”</p>
-        <span>- Irfan K.</span>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="eyebrow">ZeeJay's</span>
+        <h3>Food for your mood.</h3>
+        <p>Homestyle meals made with love, delivered while they're still warm.</p>
       </div>
-      <div class="testimonial">
-        <p>“Best karahi I’ve had in years. Flavorful and fresh!”</p>
-        <span>- Sham A.</span>
-      </div>
-      <div class="testimonial">
-        <p>“Timely delivery and amazing food quality. Highly recommended.”</p>
-        <span>- Talha T.</span>
+      <div class="foot-links">
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://wa.me/923287209079" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.facebook.com/profile.php?id=100090388509995" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/zeejays.food/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
-  </section>
+    <div class="copyright">© ZeeJay's. Pre-orders only — place yours 6 hours to 1 day ahead.</div>
+  </div>
+</footer>
 
+<script src="assets/site.js"></script>
+<script>
+  var moods = [
+    {key:'comfort', label:'Comfort', accent:'#E7A33E', dish:'Special Biryani', desc:"Fragrant rice, tender meat, slow-built spice. The one people reorder first.", img:'https://nvm-broo.github.io/Zeejays/sub/rice/chickenbir.webp'},
+    {key:'heat', label:'Craving heat', accent:'#C1442C', dish:'White Chicken Karahi', desc:"Cooked fresh in a traditional wok with our own masala blend.", img:'https://img.taste.com.au/vJFgvlvo/taste/2019/04/white-chicken-korma-curry-148900-1.jpg'},
+    {key:'curious', label:'Something new', accent:'#8DA05C', dish:'Manchurian', desc:"Indo-Chinese favorite, tossed in a spicy garlic-soy sauce.", img:'https://nvm-broo.github.io/Zeejays/sub/manchurian.jpg'}
+  ];
+  var pillsEl = document.getElementById('moodPills');
+  var displayEl = document.getElementById('moodDisplay');
+  var cardEl = document.querySelector('.mood-card');
 
-  <footer>
-    <div class="social">
-      <a href="https://www.facebook.com/profile.php?id=100090388509995" target="_blank">Facebook</a> |
-      <a href="https://www.instagram.com/zeejays.food/" target="_blank">Instagram</a>
-    </div>
-    <a href="https://wa.me/923287209079" class="whatsapp">Chat on WhatsApp</a>
-  </footer>
-
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let current = 0;
-  
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.remove('active', 'prev');
-        if (i === index) {
-          slide.classList.add('active');
-        } else if (i === (index - 1 + slides.length) % slides.length) {
-          slide.classList.add('prev');
-        }
-      });
-  
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-    }
-  
-    function nextSlide() {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    }
-  
-    // Optional: click on dots to navigate 
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        current = i;
-        showSlide(current);
-      });
+  function renderPills(activeKey){
+    pillsEl.innerHTML = '';
+    moods.forEach(function(m){
+      var b = document.createElement('button');
+      b.className = 'mood-pill' + (m.key === activeKey ? ' active' : '');
+      b.textContent = m.label;
+      b.style.setProperty('--accent', m.accent);
+      b.setAttribute('aria-pressed', m.key === activeKey);
+      b.addEventListener('click', function(){ setMood(m.key); });
+      pillsEl.appendChild(b);
     });
-  
-    // Start sliders
-    showSlide(current);
-    setInterval(nextSlide, 5000);
-  </script>
-  
+  }
+  function renderDisplay(m){
+    cardEl.style.setProperty('--accent', m.accent);
+    displayEl.style.opacity = 0;
+    setTimeout(function(){
+      displayEl.innerHTML = '<img src="'+m.img+'" alt="'+m.dish+'"><div><div class="mood-dish-label">Try this</div><div class="mood-dish-name">'+m.dish+'</div><div class="mood-dish-desc">'+m.desc+'</div></div>';
+      displayEl.style.opacity = 1;
+    }, 150);
+  }
+  function setMood(key){
+    var m = moods.find(function(x){ return x.key === key; });
+    renderPills(key);
+    renderDisplay(m);
+  }
+  setMood('comfort');
+</script>
 
 </body>
 </html>
