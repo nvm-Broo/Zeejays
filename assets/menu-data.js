@@ -222,7 +222,13 @@ var MENU = [
 
     document.addEventListener('click', function(e){
       var add = e.target.closest('[data-add]');
-      if(add){ addToCart(add.getAttribute('data-add')); return; }
+      if(add){
+        addToCart(add.getAttribute('data-add'));
+        add.classList.remove('pop');
+        void add.offsetWidth;
+        add.classList.add('pop');
+        return;
+      }
 
       var step = e.target.closest('.qty-stepper button');
       if(step){
