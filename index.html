@@ -19,12 +19,12 @@
   .mood-card{background:var(--ink-2);border:1px solid var(--line);border-radius:4px;padding:28px;}
   .mood-card .eyebrow{margin-bottom:14px;display:block;}
   .mood-pills{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
-  .mood-pill{font-family:'Space Mono',monospace;font-size:12.5px;padding:9px 14px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--cream-dim);cursor:pointer;transition:all .2s ease;}
+  .mood-pill{font-family:'Work Sans',sans-serif;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;border:1px solid var(--line-strong);background:var(--ink);color:var(--cream-dim);cursor:pointer;transition:all .2s ease;}
   .mood-pill:hover{border-color:var(--cream);color:var(--cream);}
-  .mood-pill.active{background:var(--accent,var(--turmeric));border-color:var(--accent,var(--turmeric));color:#22160A;}
+  .mood-pill.active{background:var(--accent,var(--turmeric));border-color:var(--accent,var(--turmeric));color:#FFFFFF;}
   .mood-display{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;}
   .mood-display img{width:120px;height:120px;object-fit:cover;border-radius:3px;}
-  .mood-dish-label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent,var(--turmeric));margin-bottom:6px;}
+  .mood-dish-label{font-family:'Work Sans',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent,var(--turmeric));margin-bottom:6px;}
   .mood-dish-name{font-family:'Fraunces',serif;font-size:24px;font-weight:600;margin-bottom:6px;}
   .mood-dish-desc{font-size:14px;color:var(--cream-dim);line-height:1.5;}
   .mood-fade{transition:opacity .25s ease;}
@@ -183,9 +183,9 @@
 <script src="assets/site.js"></script>
 <script>
   var moods = [
-    {key:'comfort', label:'Comfort', accent:'#E7A33E', dish:'Special Biryani', desc:"Fragrant rice, tender meat, slow-built spice. The one people reorder first.", img:'https://nvm-broo.github.io/Zeejays/sub/rice/chickenbir.webp'},
-    {key:'heat', label:'Craving heat', accent:'#C1442C', dish:'White Chicken Karahi', desc:"Cooked fresh in a traditional wok with our own masala blend.", img:'https://img.taste.com.au/vJFgvlvo/taste/2019/04/white-chicken-korma-curry-148900-1.jpg'},
-    {key:'curious', label:'Something new', accent:'#8DA05C', dish:'Manchurian', desc:"Indo-Chinese favorite, tossed in a spicy garlic-soy sauce.", img:'https://nvm-broo.github.io/Zeejays/sub/manchurian.jpg'}
+    {key:'comfort', label:'Comfort', accent:'#BE8A2E', dish:'Special Biryani', desc:"Fragrant rice, tender meat, slow-built spice. The one people reorder first.", img:'https://nvm-broo.github.io/Zeejays/sub/rice/chickenbir.webp'},
+    {key:'heat', label:'Craving heat', accent:'#B23B2A', dish:'White Chicken Karahi', desc:"Cooked fresh in a traditional wok with our own masala blend.", img:'https://img.taste.com.au/vJFgvlvo/taste/2019/04/white-chicken-korma-curry-148900-1.jpg'},
+    {key:'curious', label:'Something new', accent:'#2E5233', dish:'Manchurian', desc:"Indo-Chinese favorite, tossed in a spicy garlic-soy sauce.", img:'https://nvm-broo.github.io/Zeejays/sub/manchurian.jpg'}
   ];
   var pillsEl = document.getElementById('moodPills');
   var displayEl = document.getElementById('moodDisplay');
